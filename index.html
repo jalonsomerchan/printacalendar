@@ -2,43 +2,39 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="index,follow" />
     <meta name="description" content="Genera calendarios imprimibles en PDF gratis con meses personalizados, festivos, fines de semana sombreados, tamaño de página y orientación." />
     <link rel="canonical" href="https://printacalendar.alon.one/" />
-    <link rel="alternate" hreflang="es" href="https://printacalendar.alon.one/?lang=es" />
-    <link rel="alternate" hreflang="en" href="https://printacalendar.alon.one/?lang=en" />
-    <link rel="alternate" hreflang="fr" href="https://printacalendar.alon.one/?lang=fr" />
-    <link rel="alternate" hreflang="ca" href="https://printacalendar.alon.one/?lang=ca" />
-    <link rel="alternate" hreflang="pt" href="https://printacalendar.alon.one/?lang=pt" />
-    <link rel="alternate" hreflang="eu" href="https://printacalendar.alon.one/?lang=eu" />
-    <link rel="alternate" hreflang="x-default" href="https://printacalendar.alon.one/" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Generador de calendarios imprimibles gratis" />
-    <meta property="og:description" content="Crea calendarios mensuales en PDF para imprimir o descargar, con festivos, orientación y diseño configurable." />
-    <meta property="og:url" content="https://printacalendar.alon.one/" />
-    <meta property="og:site_name" content="Print a Calendar" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Generador de calendarios imprimibles gratis" />
-    <meta name="twitter:description" content="Crea calendarios mensuales en PDF para imprimir o descargar desde el navegador." />
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "Print a Calendar",
-        "url": "https://printacalendar.alon.one/",
-        "applicationCategory": "UtilitiesApplication",
-        "operatingSystem": "Any",
-        "description": "Generador gratuito de calendarios imprimibles en PDF con meses, festivos, orientación, tamaño de página y diseño configurable.",
-        "inLanguage": ["es", "en", "fr", "ca", "pt", "eu"],
-        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
-      }
-    </script>
     <title>Generador de calendarios imprimibles gratis | Print a Calendar</title>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: #0f172a;
+        background: linear-gradient(135deg, #eff6ff, #ffffff 45%, #f8fafc);
+      }
+      main {
+        width: min(720px, calc(100% - 32px));
+        padding: 32px;
+        border: 1px solid #dbeafe;
+        border-radius: 28px;
+        background: rgba(255, 255, 255, .88);
+        box-shadow: 0 24px 80px rgba(15, 23, 42, .12);
+      }
+      h1 { margin: 0 0 12px; font-size: clamp(2rem, 6vw, 4rem); line-height: 1; letter-spacing: -0.06em; }
+      p { margin: 0 0 14px; color: #475569; font-size: 1.05rem; line-height: 1.65; }
+      code { padding: 2px 6px; border-radius: 8px; background: #e0f2fe; color: #075985; }
+    </style>
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
+    <main>
+      <h1>Print a Calendar</h1>
+      <p>La aplicación está preparada para publicarse como build de Vite. Si ves esta pantalla, GitHub Pages todavía está sirviendo la raíz del repositorio en vez del artefacto generado.</p>
+      <p>En GitHub Pages selecciona <strong>GitHub Actions</strong> como fuente de despliegue para servir <code>dist</code>. Esta página ya no carga <code>/src/main.ts</code>, así que desaparece el error MIME <code>video/mp2t</code>.</p>
+    </main>
   </body>
 </html>
