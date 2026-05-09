@@ -1,25 +1,30 @@
-name: Deploy static site
+name: Build site into repository root
 
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - 'assets/**'
+      - 'index.html'
+      - 'favicon.svg'
+      - 'CNAME'
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
-  group: pages
+  group: build-root
   cancel-in-progress: false
 
 jobs:
-  build:
+  build-root:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -30,21 +35,17 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
+      - name: Build Vite app
         run: npm run build
 
-      - name: Upload GitHub Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
+      - name: Copy build to repository root
+        run: |
+          rm -rf assets
+          cp -R dist/. .
+          test -f CNAME || printf 'printacalendar.alon.one\n' > CNAME
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Commit built site
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'Build static site for GitHub Pages'
+          file_pattern: 'index.html assets/** favicon.svg CNAME'
